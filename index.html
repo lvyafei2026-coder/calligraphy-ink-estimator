@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calligraphy Ink Calculator — Estimate Ink Usage and Cost Per Project</title>
+<meta name="description" content="Free calligraphy ink calculator. Estimate how much ink your project needs and what it costs — based on text length, font size, paper type, and ink type.">
+<meta name="keywords" content="calligraphy ink calculator, ink cost estimator, how much ink for calligraphy, dip pen ink usage, ink cost per project">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="theme-color" content="#1a1614">
+
+<link rel="canonical" href="https://toolara.dev/calligraphy-ink-estimator/">
+<link rel="alternate" hreflang="en" href="https://toolara.dev/calligraphy-ink-estimator/">
+<link rel="alternate" hreflang="zh-Hans" href="https://toolara.dev/calligraphy-ink-estimator/zh/">
+<link rel="alternate" hreflang="zh-Hant" href="https://toolara.dev/calligraphy-ink-estimator/zh-tw/">
+<link rel="alternate" hreflang="ja" href="https://toolara.dev/calligraphy-ink-estimator/ja/">
+<link rel="alternate" hreflang="ko" href="https://toolara.dev/calligraphy-ink-estimator/ko/">
+<link rel="alternate" hreflang="de" href="https://toolara.dev/calligraphy-ink-estimator/de/">
+<link rel="alternate" hreflang="ru" href="https://toolara.dev/calligraphy-ink-estimator/ru/">
+<link rel="alternate" hreflang="es" href="https://toolara.dev/calligraphy-ink-estimator/es/">
+<link rel="alternate" hreflang="x-default" href="https://toolara.dev/calligraphy-ink-estimator/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calligraphy Ink Calculator — Estimate Usage and Cost">
+<meta property="og:description" content="Estimate how much ink your calligraphy project needs and what it costs.">
+<meta property="og:url" content="https://toolara.dev/calligraphy-ink-estimator/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calligraphy Ink Cost Estimator",
+  "url": "https://toolara.dev/calligraphy-ink-estimator/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "description": "Free calculator that estimates ink usage and cost for calligraphy projects.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="lang-switch">
+    <select id="langSelect" onchange="setLang(this.value)" aria-label="Language">
+      <option value="en">English</option>
+      <option value="zh">简体中文</option>
+      <option value="zh-TW">繁體中文</option>
+      <option value="ja">日本語</option>
+      <option value="ko">한국어</option>
+      <option value="de">Deutsch</option>
+      <option value="ru">Русский</option>
+      <option value="es">Español</option>
+    </select>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge">🖋️ Calligraphy</div>
+    <h1 data-i18n="title">Calligraphy Ink Calculator</h1>
+    <p data-i18n="subtitle">Estimate how much ink your project needs and what it costs — before you start writing.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h2 class="visually-hidden" data-i18n="calcHeading">Calculator</h2>
+
+    <div class="row">
+      <div>
+        <label for="charCount" data-i18n="charLabel">Number of characters</label>
+        <input type="number" id="charCount" min="1" step="1" placeholder="500" inputmode="numeric">
+      </div>
+      <div>
+        <label for="fontSize" data-i18n="sizeLabel">Font size (mm)</label>
+        <input type="number" id="fontSize" min="1" step="0.5" placeholder="8" value="8" inputmode="decimal">
+      </div>
+    </div>
+
+    <label for="paper" data-i18n="paperLabel">Paper type</label>
+    <select id="paper">
+      <option value="smooth" data-i18n="paperSmooth">Smooth (coated, Bristol)</option>
+      <option value="standard" selected data-i18n="paperStandard">Standard (bond, cartridge)</option>
+      <option value="absorbent" data-i18n="paperAbsorbent">Absorbent (watercolor, rice paper)</option>
+    </select>
+
+    <label for="inkType" data-i18n="inkLabel">Ink type</label>
+    <select id="inkType">
+      <option value="dye" selected data-i18n="inkDye">Dye-based</option>
+      <option value="pigment" data-i18n="inkPigment">Pigment-based</option>
+      <option value="waterproof" data-i18n="inkWaterproof">Waterproof / India ink</option>
+    </select>
+
+    <div class="row">
+      <div>
+        <label for="bottleSize" data-i18n="bottleLabel">Bottle size (mL)</label>
+        <input type="number" id="bottleSize" min="1" step="1" placeholder="30" value="30" inputmode="decimal">
+      </div>
+      <div>
+        <label for="bottlePrice" data-i18n="priceLabel">Bottle price ($)</label>
+        <input type="number" id="bottlePrice" min="0" step="0.5" placeholder="12" value="12" inputmode="decimal">
+      </div>
+    </div>
+
+    <button class="calc" type="button" onclick="calculate()" data-i18n="calcBtn">Calculate ink needed</button>
+
+    <div id="result" role="region" aria-live="polite">
+      <div class="result-label" data-i18n="resultLabel">Estimated ink needed</div>
+      <div class="ink-volume"><span id="inkVolume">—</span></div>
+      <div class="freq-note" id="costNote"></div>
+
+      <div class="breakdown">
+        <div class="bd-row"><span data-i18n="bdChars">Characters</span><strong id="bdChars">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdSize">Font size</span><strong id="bdSize">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdPaper">Paper factor</span><strong id="bdPaper">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdInk">Ink factor</span><strong id="bdInk">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdCost">Project cost</span><strong id="bdCost">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdProjects">Projects per bottle</span><strong id="bdProjects">—</strong></div>
+      </div>
+      <div class="result-disclaimer" data-i18n="resultDisclaimer">Estimate only. Actual ink usage varies by nib, writing pressure, and individual style. Always test on a scrap first.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2 data-i18n="whatIsTitle">How ink usage is estimated</h2>
+    <p data-i18n="whatIsText">Ink consumption in calligraphy depends on four main factors: the number of characters, the font size (which grows quadratically), the absorbency of the paper, and the formulation of the ink. This calculator combines these into a practical estimate so you can plan your project and budget before dipping your pen.</p>
+  </section>
+
+  <section>
+    <h2 data-i18n="factorsTitle">What affects ink consumption</h2>
+    <h3 data-i18n="f1Title">Font size</h3>
+    <p data-i18n="f1Text">When you double the font size, the ink usage roughly quadruples. This is because ink covers area, and area scales with the square of linear dimensions.</p>
+
+    <h3 data-i18n="f2Title">Paper type</h3>
+    <ul>
+      <li data-i18n="f2a"><strong>Smooth paper</strong> (coated, Bristol): ink sits on the surface, uses ~15% less</li>
+      <li data-i18n="f2b"><strong>Standard paper</strong> (bond, cartridge): baseline</li>
+      <li data-i18n="f2c"><strong>Absorbent paper</strong> (watercolor, rice paper): ink spreads into fibers, uses up to 50% more</li>
+    </ul>
+
+    <h3 data-i18n="f3Title">Ink type</h3>
+    <ul>
+      <li data-i18n="f3a"><strong>Dye-based</strong>: thin, flows easily, baseline consumption</li>
+      <li data-i18n="f3b"><strong>Pigment-based</strong>: thicker particles, ~10–15% more ink per stroke</li>
+      <li data-i18n="f3c"><strong>Waterproof / India ink</strong>: dense, covers more, uses ~20% more</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 data-i18n="howToTitle">How to use this calculator</h2>
+    <ol>
+      <li data-i18n="howTo1">Count the total characters in your project (letters, spaces excluded).</li>
+      <li data-i18n="howTo2">Enter your intended font size in millimeters (x-height or cap height).</li>
+      <li data-i18n="howTo3">Choose the paper type you'll write on.</li>
+      <li data-i18n="howTo4">Select the ink type you're using.</li>
+      <li data-i18n="howTo5">Enter your bottle size and price to see cost per project.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2 data-i18n="faqTitle">Frequently asked questions</h2>
+    <h3 data-i18n="faq1q">How much ink does a wedding invitation need?</h3>
+    <p data-i18n="faq1a">A typical wedding invitation with a couple's names, date, and venue — about 80–120 characters at 6–8mm font size — uses roughly 0.3–0.6 mL of dye-based ink. In practice, you'll dip your pen 30–60 times.</p>
+
+    <h3 data-i18n="faq2q">How many pages can one 30 mL bottle cover?</h3>
+    <p data-i18n="faq2a">A 30 mL bottle of dye-based ink on standard paper can cover roughly 40,000–60,000 characters at 8mm font size. That's equivalent to 80–120 typical wedding envelopes or 30–50 full pages of dense text.</p>
+
+    <h3 data-i18n="faq3q">Does ink go bad?</h3>
+    <p data-i18n="faq3a">Yes. Most calligraphy inks last 2–4 years unopened and 6–18 months once opened. Pigment inks tend to separate and need shaking. Store bottles upright, away from direct sunlight, and check for mold or unusual odor before use.</p>
+
+    <h3 data-i18n="faq4q">Why does my ink run out faster than estimated?</h3>
+    <p data-i18n="faq4a">Common causes: absorbent paper, heavy pressure, a broad or flexible nib, or a thick ink that leaves more residue on the nib. If you're doing a large project, always buy one extra bottle.</p>
+
+    <div class="disclaimer" data-i18n="disclaimer"><strong>Note:</strong> This is an estimate for planning purposes. Actual ink usage varies widely by nib, pressure, and writing style. Always test on scrap paper first.</div>
+  </section>
+</main>
+
+<footer class="footer" data-i18n="footer">Runs entirely in your browser. No data is collected or stored.</footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/calculator.js"></script>
+</body>
+</html>
