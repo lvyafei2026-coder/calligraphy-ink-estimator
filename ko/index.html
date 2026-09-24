@@ -61,125 +61,125 @@
   </div>
   <div class="hero-inner">
     <div class="hero-badge">🖋️ Calligraphy</div>
-    <h1 data-i18n="title">Calligraphy Ink Calculator</h1>
-    <p data-i18n="subtitle">Estimate how much ink your project needs and what it costs — before you start writing.</p>
+    <h1 data-i18n="title">캘리그라피 잉크 계산기</h1>
+    <p data-i18n="subtitle">글을 쓰기 전에 프로젝트에 필요한 잉크 양과 비용을 추정합니다.</p>
   </div>
 </header>
 
 <main class="wrap">
   <section class="card">
-    <h2 class="visually-hidden" data-i18n="calcHeading">Calculator</h2>
+    <h2 class="visually-hidden" data-i18n="calcHeading">계산기</h2>
 
     <div class="row">
       <div>
-        <label for="charCount" data-i18n="charLabel">Number of characters</label>
+        <label for="charCount" data-i18n="charLabel">글자 수</label>
         <input type="number" id="charCount" min="1" step="1" placeholder="500" inputmode="numeric">
       </div>
       <div>
-        <label for="fontSize" data-i18n="sizeLabel">Font size (mm)</label>
+        <label for="fontSize" data-i18n="sizeLabel">글꼴 크기 (mm)</label>
         <input type="number" id="fontSize" min="1" step="0.5" placeholder="8" value="8" inputmode="decimal">
       </div>
     </div>
 
-    <label for="paper" data-i18n="paperLabel">Paper type</label>
+    <label for="paper" data-i18n="paperLabel">종이 종류</label>
     <select id="paper">
-      <option value="smooth" data-i18n="paperSmooth">Smooth (coated, Bristol)</option>
-      <option value="standard" selected data-i18n="paperStandard">Standard (bond, cartridge)</option>
-      <option value="absorbent" data-i18n="paperAbsorbent">Absorbent (watercolor, rice paper)</option>
+      <option value="smooth" data-i18n="paperSmooth">매끄러운 종이 (코팅, 브리스톨)</option>
+      <option value="standard" selected data-i18n="paperStandard">일반 종이 (본드, 카트리지)</option>
+      <option value="absorbent" data-i18n="paperAbsorbent">흡수성 종이 (수채화, 화선지)</option>
     </select>
 
-    <label for="inkType" data-i18n="inkLabel">Ink type</label>
+    <label for="inkType" data-i18n="inkLabel">잉크 종류</label>
     <select id="inkType">
-      <option value="dye" selected data-i18n="inkDye">Dye-based</option>
-      <option value="pigment" data-i18n="inkPigment">Pigment-based</option>
-      <option value="waterproof" data-i18n="inkWaterproof">Waterproof / India ink</option>
+      <option value="dye" selected data-i18n="inkDye">염료 잉크</option>
+      <option value="pigment" data-i18n="inkPigment">안료 잉크</option>
+      <option value="waterproof" data-i18n="inkWaterproof">방수 / 인디아 잉크</option>
     </select>
 
     <div class="row">
       <div>
-        <label for="bottleSize" data-i18n="bottleLabel">Bottle size (mL)</label>
+        <label for="bottleSize" data-i18n="bottleLabel">병 용량 (mL)</label>
         <input type="number" id="bottleSize" min="1" step="1" placeholder="30" value="30" inputmode="decimal">
       </div>
       <div>
-        <label for="bottlePrice" data-i18n="priceLabel">Bottle price ($)</label>
+        <label for="bottlePrice" data-i18n="priceLabel">병 가격 ($)</label>
         <input type="number" id="bottlePrice" min="0" step="0.5" placeholder="12" value="12" inputmode="decimal">
       </div>
     </div>
 
-    <button class="calc" type="button" onclick="calculate()" data-i18n="calcBtn">Calculate ink needed</button>
+    <button class="calc" type="button" onclick="calculate()" data-i18n="calcBtn">필요한 잉크 계산</button>
 
     <div id="result" role="region" aria-live="polite">
-      <div class="result-label" data-i18n="resultLabel">Estimated ink needed</div>
+      <div class="result-label" data-i18n="resultLabel">예상 필요 잉크</div>
       <div class="ink-volume"><span id="inkVolume">—</span></div>
       <div class="freq-note" id="costNote"></div>
 
       <div class="breakdown">
-        <div class="bd-row"><span data-i18n="bdChars">Characters</span><strong id="bdChars">—</strong></div>
-        <div class="bd-row"><span data-i18n="bdSize">Font size</span><strong id="bdSize">—</strong></div>
-        <div class="bd-row"><span data-i18n="bdPaper">Paper factor</span><strong id="bdPaper">—</strong></div>
-        <div class="bd-row"><span data-i18n="bdInk">Ink factor</span><strong id="bdInk">—</strong></div>
-        <div class="bd-row"><span data-i18n="bdCost">Project cost</span><strong id="bdCost">—</strong></div>
-        <div class="bd-row"><span data-i18n="bdProjects">Projects per bottle</span><strong id="bdProjects">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdChars">글자 수</span><strong id="bdChars">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdSize">글꼴 크기</span><strong id="bdSize">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdPaper">종이 계수</span><strong id="bdPaper">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdInk">잉크 계수</span><strong id="bdInk">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdCost">프로젝트 비용</span><strong id="bdCost">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdProjects">병당 프로젝트 수</span><strong id="bdProjects">—</strong></div>
       </div>
-      <div class="result-disclaimer" data-i18n="resultDisclaimer">Estimate only. Actual ink usage varies by nib, writing pressure, and individual style. Always test on a scrap first.</div>
+      <div class="result-disclaimer" data-i18n="resultDisclaimer">추정치입니다. 실제 잉크 사용량은 펜촉, 필압, 개인 스타일에 따라 다릅니다. 항상 스크랩에 먼저 테스트하세요.</div>
     </div>
   </section>
 
   <section>
-    <h2 data-i18n="whatIsTitle">How ink usage is estimated</h2>
-    <p data-i18n="whatIsText">Ink consumption in calligraphy depends on four main factors: the number of characters, the font size (which grows quadratically), the absorbency of the paper, and the formulation of the ink. This calculator combines these into a practical estimate so you can plan your project and budget before dipping your pen.</p>
+    <h2 data-i18n="whatIsTitle">잉크 사용량 추정 방법</h2>
+    <p data-i18n="whatIsText">캘리그라피의 잉크 소비량은 네 가지 주요 요인에 따라 결정됩니다: 글자 수, 글꼴 크기(제곱으로 증가), 종이의 흡수성, 잉크의 조성. 이 계산기는 이를 결합하여 펜을 담그기 전에 프로젝트를 계획하고 예산을 세울 수 있도록 합니다.</p>
   </section>
 
   <section>
-    <h2 data-i18n="factorsTitle">What affects ink consumption</h2>
-    <h3 data-i18n="f1Title">Font size</h3>
-    <p data-i18n="f1Text">When you double the font size, the ink usage roughly quadruples. This is because ink covers area, and area scales with the square of linear dimensions.</p>
+    <h2 data-i18n="factorsTitle">잉크 소비에 영향을 미치는 요인</h2>
+    <h3 data-i18n="f1Title">글꼴 크기</h3>
+    <p data-i18n="f1Text">글꼴 크기를 두 배로 늘리면 잉크 사용량은 약 네 배가 됩니다. 잉크는 면적을 덮고 면적은 선형 치수의 제곱에 비례하기 때문입니다.</p>
 
-    <h3 data-i18n="f2Title">Paper type</h3>
+    <h3 data-i18n="f2Title">종이 종류</h3>
     <ul>
-      <li data-i18n="f2a"><strong>Smooth paper</strong> (coated, Bristol): ink sits on the surface, uses ~15% less</li>
-      <li data-i18n="f2b"><strong>Standard paper</strong> (bond, cartridge): baseline</li>
-      <li data-i18n="f2c"><strong>Absorbent paper</strong> (watercolor, rice paper): ink spreads into fibers, uses up to 50% more</li>
+      <li data-i18n="f2a">매끄러운 종이 (코팅, 브리스톨): 잉크가 표면에 머물러 약 15% 적게 사용</li>
+      <li data-i18n="f2b">일반 종이 (본드, 카트리지): 기준</li>
+      <li data-i18n="f2c">흡수성 종이 (수채화, 화선지): 잉크가 섬유로 스며들어 최대 50% 더 사용</li>
     </ul>
 
-    <h3 data-i18n="f3Title">Ink type</h3>
+    <h3 data-i18n="f3Title">잉크 종류</h3>
     <ul>
-      <li data-i18n="f3a"><strong>Dye-based</strong>: thin, flows easily, baseline consumption</li>
-      <li data-i18n="f3b"><strong>Pigment-based</strong>: thicker particles, ~10–15% more ink per stroke</li>
-      <li data-i18n="f3c"><strong>Waterproof / India ink</strong>: dense, covers more, uses ~20% more</li>
+      <li data-i18n="f3a">염료 잉크: 묽고 흐름이 좋음, 기준 소비량</li>
+      <li data-i18n="f3b">안료 잉크: 입자가 두껍고 스트로크당 약 10~15% 더 사용</li>
+      <li data-i18n="f3c">방수 / 인디아 잉크: 농도가 높고 커버력이 좋아 약 20% 더 사용</li>
     </ul>
   </section>
 
   <section>
-    <h2 data-i18n="howToTitle">How to use this calculator</h2>
+    <h2 data-i18n="howToTitle">사용 방법</h2>
     <ol>
-      <li data-i18n="howTo1">Count the total characters in your project (letters, spaces excluded).</li>
-      <li data-i18n="howTo2">Enter your intended font size in millimeters (x-height or cap height).</li>
-      <li data-i18n="howTo3">Choose the paper type you'll write on.</li>
-      <li data-i18n="howTo4">Select the ink type you're using.</li>
-      <li data-i18n="howTo5">Enter your bottle size and price to see cost per project.</li>
+      <li data-i18n="howTo1">프로젝트의 총 글자 수를 세세요 (공백 제외).</li>
+      <li data-i18n="howTo2">예상 글꼴 크기를 밀리미터로 입력하세요 (x 높이 또는 대문자 높이).</li>
+      <li data-i18n="howTo3">글을 쓸 종이 종류를 선택하세요.</li>
+      <li data-i18n="howTo4">사용할 잉크 종류를 선택하세요.</li>
+      <li data-i18n="howTo5">병 용량과 가격을 입력하여 프로젝트당 비용을 확인하세요.</li>
     </ol>
   </section>
 
   <section>
-    <h2 data-i18n="faqTitle">Frequently asked questions</h2>
-    <h3 data-i18n="faq1q">How much ink does a wedding invitation need?</h3>
-    <p data-i18n="faq1a">A typical wedding invitation with a couple's names, date, and venue — about 80–120 characters at 6–8mm font size — uses roughly 0.3–0.6 mL of dye-based ink. In practice, you'll dip your pen 30–60 times.</p>
+    <h2 data-i18n="faqTitle">자주 묻는 질문</h2>
+    <h3 data-i18n="faq1q">결혼식 초대장에는 잉크가 얼마나 필요하나요?</h3>
+    <p data-i18n="faq1a">일반적인 결혼식 초대장(신랑신부 이름, 날짜, 장소, 약 80~120자, 6~8mm 글꼴)은 염료 잉크로 약 0.3~0.6 mL 사용합니다. 실제로는 펜을 30~60번 담그게 됩니다.</p>
 
-    <h3 data-i18n="faq2q">How many pages can one 30 mL bottle cover?</h3>
-    <p data-i18n="faq2a">A 30 mL bottle of dye-based ink on standard paper can cover roughly 40,000–60,000 characters at 8mm font size. That's equivalent to 80–120 typical wedding envelopes or 30–50 full pages of dense text.</p>
+    <h3 data-i18n="faq2q">30 mL 병 하나로 몇 페이지를 쓸 수 있나요?</h3>
+    <p data-i18n="faq2a">30 mL 염료 잉크를 일반 종이에 8mm 글꼴로 쓰면 약 40,000~60,000자 분량입니다. 이는 일반적인 결혼식 봉투 80~120장 또는 빽빽한 텍스트 30~50페이지에 해당합니다.</p>
 
-    <h3 data-i18n="faq3q">Does ink go bad?</h3>
-    <p data-i18n="faq3a">Yes. Most calligraphy inks last 2–4 years unopened and 6–18 months once opened. Pigment inks tend to separate and need shaking. Store bottles upright, away from direct sunlight, and check for mold or unusual odor before use.</p>
+    <h3 data-i18n="faq3q">잉크가 상하나요?</h3>
+    <p data-i18n="faq3a">네. 대부분의 캘리그라피 잉크는 개봉 전 2~4년, 개봉 후 6~18개월 지속됩니다. 안료 잉크는 분리되기 쉬우므로 사용 전 흔들어야 합니다. 병을 똑바로 세워 직사광선을 피해 보관하고, 사용 전 곰팡이나 이상한 냄새가 없는지 확인하세요.</p>
 
-    <h3 data-i18n="faq4q">Why does my ink run out faster than estimated?</h3>
-    <p data-i18n="faq4a">Common causes: absorbent paper, heavy pressure, a broad or flexible nib, or a thick ink that leaves more residue on the nib. If you're doing a large project, always buy one extra bottle.</p>
+    <h3 data-i18n="faq4q">예상보다 잉크가 빨리 떨어지는 이유는?</h3>
+    <p data-i18n="faq4a">흔한 원인: 흡수성 종이 사용, 강한 필압, 넓거나 유연한 펜촉, 또는 펜촉에 잔여물이 많이 남는 두꺼운 잉크. 대규모 프로젝트의 경우 항상 여분의 병을 구매하세요.</p>
 
-    <div class="disclaimer" data-i18n="disclaimer"><strong>Note:</strong> This is an estimate for planning purposes. Actual ink usage varies widely by nib, pressure, and writing style. Always test on scrap paper first.</div>
+    <div class="disclaimer" data-i18n="disclaimer"><strong>참고:</strong> 이것은 계획 목적의 추정치입니다. 실제 잉크 사용량은 펜촉, 필압, 필체에 따라 크게 다릅니다. 항상 스크랩에 먼저 테스트하세요.</div>
   </section>
 </main>
 
-<footer class="footer" data-i18n="footer">Runs entirely in your browser. No data is collected or stored.</footer>
+<footer class="footer" data-i18n="footer">전적으로 브라우저에서 실행됩니다. 데이터를 수집하거나 저장하지 않습니다.</footer>
 
 <script src="/js/i18n.js"></script>
 <script src="/js/calculator.js"></script>

@@ -61,125 +61,125 @@
   </div>
   <div class="hero-inner">
     <div class="hero-badge">🖋️ Calligraphy</div>
-    <h1 data-i18n="title">Calligraphy Ink Calculator</h1>
-    <p data-i18n="subtitle">Estimate how much ink your project needs and what it costs — before you start writing.</p>
+    <h1 data-i18n="title">书法墨水成本估算器</h1>
+    <p data-i18n="subtitle">在开始书写之前，估算项目所需的墨水量和成本。</p>
   </div>
 </header>
 
 <main class="wrap">
   <section class="card">
-    <h2 class="visually-hidden" data-i18n="calcHeading">Calculator</h2>
+    <h2 class="visually-hidden" data-i18n="calcHeading">计算器</h2>
 
     <div class="row">
       <div>
-        <label for="charCount" data-i18n="charLabel">Number of characters</label>
+        <label for="charCount" data-i18n="charLabel">字符数量</label>
         <input type="number" id="charCount" min="1" step="1" placeholder="500" inputmode="numeric">
       </div>
       <div>
-        <label for="fontSize" data-i18n="sizeLabel">Font size (mm)</label>
+        <label for="fontSize" data-i18n="sizeLabel">字号（毫米）</label>
         <input type="number" id="fontSize" min="1" step="0.5" placeholder="8" value="8" inputmode="decimal">
       </div>
     </div>
 
-    <label for="paper" data-i18n="paperLabel">Paper type</label>
+    <label for="paper" data-i18n="paperLabel">纸张类型</label>
     <select id="paper">
-      <option value="smooth" data-i18n="paperSmooth">Smooth (coated, Bristol)</option>
-      <option value="standard" selected data-i18n="paperStandard">Standard (bond, cartridge)</option>
-      <option value="absorbent" data-i18n="paperAbsorbent">Absorbent (watercolor, rice paper)</option>
+      <option value="smooth" data-i18n="paperSmooth">光滑纸（铜版纸、布里斯托纸）</option>
+      <option value="standard" selected data-i18n="paperStandard">普通纸（证券纸、卡纸）</option>
+      <option value="absorbent" data-i18n="paperAbsorbent">吸墨纸（水彩纸、宣纸）</option>
     </select>
 
-    <label for="inkType" data-i18n="inkLabel">Ink type</label>
+    <label for="inkType" data-i18n="inkLabel">墨水类型</label>
     <select id="inkType">
-      <option value="dye" selected data-i18n="inkDye">Dye-based</option>
-      <option value="pigment" data-i18n="inkPigment">Pigment-based</option>
-      <option value="waterproof" data-i18n="inkWaterproof">Waterproof / India ink</option>
+      <option value="dye" selected data-i18n="inkDye">染料墨水</option>
+      <option value="pigment" data-i18n="inkPigment">颜料墨水</option>
+      <option value="waterproof" data-i18n="inkWaterproof">防水 / 印度墨</option>
     </select>
 
     <div class="row">
       <div>
-        <label for="bottleSize" data-i18n="bottleLabel">Bottle size (mL)</label>
+        <label for="bottleSize" data-i18n="bottleLabel">每瓶容量（毫升）</label>
         <input type="number" id="bottleSize" min="1" step="1" placeholder="30" value="30" inputmode="decimal">
       </div>
       <div>
-        <label for="bottlePrice" data-i18n="priceLabel">Bottle price ($)</label>
+        <label for="bottlePrice" data-i18n="priceLabel">每瓶价格（美元）</label>
         <input type="number" id="bottlePrice" min="0" step="0.5" placeholder="12" value="12" inputmode="decimal">
       </div>
     </div>
 
-    <button class="calc" type="button" onclick="calculate()" data-i18n="calcBtn">Calculate ink needed</button>
+    <button class="calc" type="button" onclick="calculate()" data-i18n="calcBtn">计算所需墨水</button>
 
     <div id="result" role="region" aria-live="polite">
-      <div class="result-label" data-i18n="resultLabel">Estimated ink needed</div>
+      <div class="result-label" data-i18n="resultLabel">估算所需墨水</div>
       <div class="ink-volume"><span id="inkVolume">—</span></div>
       <div class="freq-note" id="costNote"></div>
 
       <div class="breakdown">
-        <div class="bd-row"><span data-i18n="bdChars">Characters</span><strong id="bdChars">—</strong></div>
-        <div class="bd-row"><span data-i18n="bdSize">Font size</span><strong id="bdSize">—</strong></div>
-        <div class="bd-row"><span data-i18n="bdPaper">Paper factor</span><strong id="bdPaper">—</strong></div>
-        <div class="bd-row"><span data-i18n="bdInk">Ink factor</span><strong id="bdInk">—</strong></div>
-        <div class="bd-row"><span data-i18n="bdCost">Project cost</span><strong id="bdCost">—</strong></div>
-        <div class="bd-row"><span data-i18n="bdProjects">Projects per bottle</span><strong id="bdProjects">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdChars">字符数</span><strong id="bdChars">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdSize">字号</span><strong id="bdSize">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdPaper">纸张系数</span><strong id="bdPaper">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdInk">墨水系数</span><strong id="bdInk">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdCost">项目成本</span><strong id="bdCost">—</strong></div>
+        <div class="bd-row"><span data-i18n="bdProjects">每瓶可完成项目数</span><strong id="bdProjects">—</strong></div>
       </div>
-      <div class="result-disclaimer" data-i18n="resultDisclaimer">Estimate only. Actual ink usage varies by nib, writing pressure, and individual style. Always test on a scrap first.</div>
+      <div class="result-disclaimer" data-i18n="resultDisclaimer">仅为估算值。实际用量会因笔尖、书写压力和个人风格而不同。建议先在废纸上测试。</div>
     </div>
   </section>
 
   <section>
-    <h2 data-i18n="whatIsTitle">How ink usage is estimated</h2>
-    <p data-i18n="whatIsText">Ink consumption in calligraphy depends on four main factors: the number of characters, the font size (which grows quadratically), the absorbency of the paper, and the formulation of the ink. This calculator combines these into a practical estimate so you can plan your project and budget before dipping your pen.</p>
+    <h2 data-i18n="whatIsTitle">墨水用量是如何估算的</h2>
+    <p data-i18n="whatIsText">书法墨水消耗量取决于四个主要因素：字符数量、字号（按平方增长）、纸张吸墨性以及墨水配方。本计算器综合这些因素，帮助您在动笔前做好预算和计划。</p>
   </section>
 
   <section>
-    <h2 data-i18n="factorsTitle">What affects ink consumption</h2>
-    <h3 data-i18n="f1Title">Font size</h3>
-    <p data-i18n="f1Text">When you double the font size, the ink usage roughly quadruples. This is because ink covers area, and area scales with the square of linear dimensions.</p>
+    <h2 data-i18n="factorsTitle">影响墨水消耗的因素</h2>
+    <h3 data-i18n="f1Title">字号</h3>
+    <p data-i18n="f1Text">当字号加倍时，墨水用量大约增加四倍。这是因为墨水覆盖的是面积，而面积与线性尺寸的平方成正比。</p>
 
-    <h3 data-i18n="f2Title">Paper type</h3>
+    <h3 data-i18n="f2Title">纸张类型</h3>
     <ul>
-      <li data-i18n="f2a"><strong>Smooth paper</strong> (coated, Bristol): ink sits on the surface, uses ~15% less</li>
-      <li data-i18n="f2b"><strong>Standard paper</strong> (bond, cartridge): baseline</li>
-      <li data-i18n="f2c"><strong>Absorbent paper</strong> (watercolor, rice paper): ink spreads into fibers, uses up to 50% more</li>
+      <li data-i18n="f2a">光滑纸（铜版纸、布里斯托纸）：墨水停留在表面，用量约减少 15%</li>
+      <li data-i18n="f2b">普通纸（证券纸、卡纸）：基准</li>
+      <li data-i18n="f2c">吸墨纸（水彩纸、宣纸）：墨水渗入纤维，用量最多增加 50%</li>
     </ul>
 
-    <h3 data-i18n="f3Title">Ink type</h3>
+    <h3 data-i18n="f3Title">墨水类型</h3>
     <ul>
-      <li data-i18n="f3a"><strong>Dye-based</strong>: thin, flows easily, baseline consumption</li>
-      <li data-i18n="f3b"><strong>Pigment-based</strong>: thicker particles, ~10–15% more ink per stroke</li>
-      <li data-i18n="f3c"><strong>Waterproof / India ink</strong>: dense, covers more, uses ~20% more</li>
+      <li data-i18n="f3a">染料墨水：稀薄、流畅，基准消耗</li>
+      <li data-i18n="f3b">颜料墨水：颗粒较厚，每笔多用约 10–15%</li>
+      <li data-i18n="f3c">防水 / 印度墨：浓稠、覆盖力强，多用约 20%</li>
     </ul>
   </section>
 
   <section>
-    <h2 data-i18n="howToTitle">How to use this calculator</h2>
+    <h2 data-i18n="howToTitle">如何使用本计算器</h2>
     <ol>
-      <li data-i18n="howTo1">Count the total characters in your project (letters, spaces excluded).</li>
-      <li data-i18n="howTo2">Enter your intended font size in millimeters (x-height or cap height).</li>
-      <li data-i18n="howTo3">Choose the paper type you'll write on.</li>
-      <li data-i18n="howTo4">Select the ink type you're using.</li>
-      <li data-i18n="howTo5">Enter your bottle size and price to see cost per project.</li>
+      <li data-i18n="howTo1">统计项目中的总字符数（不含空格）。</li>
+      <li data-i18n="howTo2">输入预计的字号（毫米，x 高度或大写高度）。</li>
+      <li data-i18n="howTo3">选择书写使用的纸张类型。</li>
+      <li data-i18n="howTo4">选择使用的墨水类型。</li>
+      <li data-i18n="howTo5">输入每瓶容量和价格，查看单次项目成本。</li>
     </ol>
   </section>
 
   <section>
-    <h2 data-i18n="faqTitle">Frequently asked questions</h2>
-    <h3 data-i18n="faq1q">How much ink does a wedding invitation need?</h3>
-    <p data-i18n="faq1a">A typical wedding invitation with a couple's names, date, and venue — about 80–120 characters at 6–8mm font size — uses roughly 0.3–0.6 mL of dye-based ink. In practice, you'll dip your pen 30–60 times.</p>
+    <h2 data-i18n="faqTitle">常见问题</h2>
+    <h3 data-i18n="faq1q">一份婚礼请柬需要多少墨水？</h3>
+    <p data-i18n="faq1a">一份典型的婚礼请柬（含新人姓名、日期、地点，约 80–120 个字符，字号 6–8 毫米）大约消耗 0.3–0.6 毫升染料墨水。实际操作中大约需要蘸笔 30–60 次。</p>
 
-    <h3 data-i18n="faq2q">How many pages can one 30 mL bottle cover?</h3>
-    <p data-i18n="faq2a">A 30 mL bottle of dye-based ink on standard paper can cover roughly 40,000–60,000 characters at 8mm font size. That's equivalent to 80–120 typical wedding envelopes or 30–50 full pages of dense text.</p>
+    <h3 data-i18n="faq2q">一瓶 30 毫升墨水可以写多少？</h3>
+    <p data-i18n="faq2a">一瓶 30 毫升染料墨水在普通纸上，8 毫米字号下约可书写 40,000–60,000 个字符。相当于 80–120 份典型婚礼信封，或 30–50 页密集文字。</p>
 
-    <h3 data-i18n="faq3q">Does ink go bad?</h3>
-    <p data-i18n="faq3a">Yes. Most calligraphy inks last 2–4 years unopened and 6–18 months once opened. Pigment inks tend to separate and need shaking. Store bottles upright, away from direct sunlight, and check for mold or unusual odor before use.</p>
+    <h3 data-i18n="faq3q">墨水会变质吗？</h3>
+    <p data-i18n="faq3a">会。多数书法墨水未开封可保存 2–4 年，开封后 6–18 个月。颜料墨水容易分层，使用前需摇匀。请竖直存放，避免阳光直射，使用前检查是否有霉斑或异味。</p>
 
-    <h3 data-i18n="faq4q">Why does my ink run out faster than estimated?</h3>
-    <p data-i18n="faq4a">Common causes: absorbent paper, heavy pressure, a broad or flexible nib, or a thick ink that leaves more residue on the nib. If you're doing a large project, always buy one extra bottle.</p>
+    <h3 data-i18n="faq4q">为什么我的墨水比预估消耗更快？</h3>
+    <p data-i18n="faq4a">常见原因：使用吸墨纸、书写压力较大、笔尖较宽或弹性大，或墨水较稠、在笔尖残留较多。进行大型项目时，建议多备一瓶。</p>
 
-    <div class="disclaimer" data-i18n="disclaimer"><strong>Note:</strong> This is an estimate for planning purposes. Actual ink usage varies widely by nib, pressure, and writing style. Always test on scrap paper first.</div>
+    <div class="disclaimer" data-i18n="disclaimer"><strong>注意：</strong>本结果仅供计划参考。实际用量会因笔尖、压力和书写风格而差异较大。建议先在废纸上测试。</div>
   </section>
 </main>
 
-<footer class="footer" data-i18n="footer">Runs entirely in your browser. No data is collected or stored.</footer>
+<footer class="footer" data-i18n="footer">完全在您的浏览器中运行。不收集、不存储任何数据。</footer>
 
 <script src="/js/i18n.js"></script>
 <script src="/js/calculator.js"></script>
