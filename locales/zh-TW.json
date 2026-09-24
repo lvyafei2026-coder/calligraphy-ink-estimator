@@ -56,5 +56,6 @@
   "footer": "完全在您的瀏覽器中運行。不收集、不儲存任何資料。",
   "alertChars": "請輸入字元數量。",
   "alertSize": "請輸入有效的字級。",
-  "alertBottle": "請輸入每瓶容量。"
+  "alertBottle": "請輸入每瓶容量。",
+  "heroBadge": "🖋️ 書法"
 }

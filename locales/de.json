@@ -56,5 +56,6 @@
   "footer": "Läuft vollständig in Ihrem Browser. Es werden keine Daten gesammelt oder gespeichert.",
   "alertChars": "Bitte geben Sie die Anzahl der Zeichen ein.",
   "alertSize": "Bitte geben Sie eine gültige Schriftgröße ein.",
-  "alertBottle": "Bitte geben Sie die Flaschengröße ein."
+  "alertBottle": "Bitte geben Sie die Flaschengröße ein.",
+  "heroBadge": "🖋️ Kalligraphie"
 }

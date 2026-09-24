@@ -56,5 +56,6 @@
   "footer": "Se ejecuta completamente en su navegador. No se recopilan ni almacenan datos.",
   "alertChars": "Por favor introduzca el número de caracteres.",
   "alertSize": "Por favor introduzca un tamaño de fuente válido.",
-  "alertBottle": "Por favor introduzca el tamaño del frasco."
+  "alertBottle": "Por favor introduzca el tamaño del frasco.",
+  "heroBadge": "🖋️ Caligrafía"
 }
